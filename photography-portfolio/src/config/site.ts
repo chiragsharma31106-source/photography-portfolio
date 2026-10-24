@@ -1,10 +1,10 @@
+
 export const siteConfig = {
   photographerName: "CHIRAG SHARMA",
   tagline: "Stories, framed with intention.",
   location: "Jaipur, India",
   email: "chiragclicksss027@gmail.com",
-  // Use country code + number, digits only. Example India: 919876543210
-  whatsappNumber: "8094960826",
+  whatsappNumber: "918094960826",
   instagramUsername: "_chirag_sharma27",
   siteUrl: "https://example.com",
 };
