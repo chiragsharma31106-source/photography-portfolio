@@ -2,6 +2,7 @@ export type PhotographyCategory =
   | "Event / Concert"
   | "Product"
   | "Food / Cafe"
+  | "Nightlife"
   | "Travel / Architecture"
   | "Automotive";
 
@@ -27,6 +28,7 @@ export const categories: ("All Work" | PhotographyCategory)[] = [
   "Event / Concert",
   "Product",
   "Food / Cafe",
+  "Nightlife",
   "Travel / Architecture",
   "Automotive",
 ];
@@ -77,25 +79,26 @@ export const projects: PortfolioProject[] = [
     year: "2025",
     location: "Jaipur, India"
   },
-  {
-    title: "Nightlife",
-    slug: "nightlife",
-    category: "Nightlife",
-    coverImage: "/images/nightlife/_MG_3504.JPG",
-    gallery: [
-      { src: "/images/nightlife/_MG_3504.JPG" },
-      { src: "/images/nightlife/DSC00458.JPG" },
-      { src: "/images/nightlife/DSC00531.JPG" },
-      { src: "/images/nightlife/DSC00619.JPG" },
-      { src: "/images/nightlife/DSC00651.JPG" },
-      { src: "/images/nightlife/DSC00690.JPG" },
-      { src: "/images/nightlife/DSC00703.JPG" },
-      { src: "/images/nightlife/DSC00717.JPG" },
-      { src: "/images/nightlife/DSC00777.JPG" },
-      { src: "/images/nightlife/IMG_3603.JPG" },
-      { src: "/images/nightlife/IMG_3703.JPG" },
-      { src: "/images/nightlife/IMG_3839.JPG" },
-      { src: "/images/nightlife/IMG_3973.JPG" },
+{
+  title: "Nightlife",
+  slug: "nightlife",
+  category: "Nightlife",
+  description: "A collection of nightlife, live events, and concert photography capturing the energy, atmosphere, and unforgettable moments of the night.",
+  coverImage: "/images/nightlife/_MG_3504.JPG",
+  gallery: [
+    { src: "/images/nightlife/_MG_3504.JPG", alt: "Nightlife photography" },
+    { src: "/images/nightlife/DSC00458.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00531.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00619.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00651.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00690.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00703.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00717.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/DSC00777.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/IMG_3603.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/IMG_3703.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/IMG_3839.JPG", alt: "Nightlife event photography" },
+    { src: "/images/nightlife/IMG_3973.JPG", alt: "Nightlife event photography" },
   ],
 },
   {
