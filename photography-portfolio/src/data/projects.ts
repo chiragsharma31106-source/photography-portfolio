@@ -1,10 +1,13 @@
+
 export type PhotographyCategory =
   | "Event / Concert"
+  | "Celebrity / Events"
   | "Product"
   | "Food / Cafe"
   | "Nightlife"
   | "Travel / Architecture"
   | "Automotive";
+
 
 export type ProjectImage = {
   src: string;
@@ -23,15 +26,18 @@ export type PortfolioProject = {
   client?: string;
 };
 
+
 export const categories: ("All Work" | PhotographyCategory)[] = [
   "All Work",
   "Event / Concert",
+  "Celebrity / Events",
   "Product",
   "Food / Cafe",
   "Nightlife",
   "Travel / Architecture",
   "Automotive",
 ];
+
 
 // Replace these sample images with your own photographs before publishing.
 // Unsplash images are only placeholders for layout testing.
@@ -101,39 +107,121 @@ export const projects: PortfolioProject[] = [
     { src: "/images/nightlife/IMG_3973.JPG", alt: "Nightlife event photography" },
   ],
 },
-  {
-    slug: "quiet-geometry",
-    title: "Quiet Geometry",
-    category: "Travel / Architecture",
-    description: "Lines, light and architectural details found while wandering through the city.",
-    coverImage: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=85",
-    gallery: [
-      { src: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1600&q=85", alt: "Modern architectural structure" },
-      { src: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=85", alt: "Architectural facade and sky" }
-    ],
-    year: "2025"
-  },
-  {
-    slug: "moving-lines",
-    title: "Moving Lines",
-    category: "Automotive",
-    description: "Clean details and bold silhouettes celebrating the design of machines.",
-    coverImage: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1400&q=85",
-    gallery: [
-      { src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=85", alt: "Sports car in dramatic light" },
-      { src: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=85", alt: "Car detail photography" }
-    ],
-    year: "2025"
-  },
-  {
-    slug: "city-after-rain",
-    title: "City After Rain",
-    category: "Travel / Architecture",
-    description: "A personal study of the city after the rain, when reflections reshape familiar streets.",
-    coverImage: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1400&q=85",
-    gallery: [
-      { src: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=85", alt: "City skyline at dusk" },
-      { src: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1600&q=85", alt: "City buildings from street level" }
-    ]
-  }
-];
+ 
+
+{
+  slug: "celeb-events",
+  title: "Celeb Events",
+  category: "Celebrity / Events",
+  description: "Capturing celebrity appearances, candid moments, and unforgettable experiences from exclusive events.",
+  coverImage: "/images/celeb-events/_DSC0131.jpg",
+  gallery: [
+    { src: "/images/celeb-events/_DSC0131.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_DSC0318.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_DSC0335.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_DSC0429.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_DSC0568.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_DSC0620.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_MG_0066.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_MG_0073.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_MG_0079.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/_MG_0130.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC_3077.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC_3132.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC05484.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC05632.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC05744.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC07522.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC09002.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC09042.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/DSC09074.jpg.jpeg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0034.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0052.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0081-2.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0183.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0205.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0212.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0259.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0369.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0414.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0424.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0455.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0528.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/IMG_0533.jpg", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/M3_04165.JPG", alt: "Celebrity event photography" },
+    { src: "/images/celeb-events/M3_04268.JPG", alt: "Celebrity event photography" }
+  ],
+  year: "2025",
+  location: "Jaipur, India"
+},
+
+
+  
+{
+  slug: "moving-lines",
+  title: "Moving Lines",
+  category: "Automotive",
+  description: "Automotive photography capturing bold silhouettes, refined details, and the character of every machine.",
+  coverImage: "/images/cars/DSC04025.JPG",
+  gallery: [
+    { src: "/images/cars/DSC04025.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04066.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04127.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04134.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04254.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04258.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04280.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04356.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04486.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04552.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04743.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04746.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04756.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04795.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04802.JPG", alt: "Automotive photography" },
+    { src: "/images/cars/DSC04833.JPG", alt: "Automotive photography" }
+  ],
+  year: "2025"
+},
+
+  
+{
+  slug: "travel-architecture",
+  title: "Travel & Architecture",
+  category: "Travel / Architecture",
+  description: "Exploring places, architectural details, and travel stories through light, texture, and perspective.",
+  coverImage: "/images/travel/_DSC0351.JPG",
+  gallery: [
+    { src: "/images/travel/_DSC0351.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_0262.JPG", alt: "Travel and architecture" },
+    { src: "/images/travel/_MG_0358.jpg", alt: "Architectural details" },
+    { src: "/images/travel/_MG_6368.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6452.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6520.JPG", alt: "Architecture and surroundings" },
+    { src: "/images/travel/_MG_6525.JPG", alt: "Architectural details" },
+    { src: "/images/travel/_MG_6588.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6611.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6615.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6653.JPG", alt: "Architecture photography" },
+    { src: "/images/travel/_MG_6707.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6716.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6750.JPG", alt: "Architectural details" },
+    { src: "/images/travel/_MG_6751.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6763.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_6775.JPG", alt: "Architecture photography" },
+    { src: "/images/travel/_MG_6786.jpg", alt: "Travel photography" },
+    { src: "/images/travel/_MG_7783.jpg", alt: "Travel photography" },
+    { src: "/images/travel/_MG_7819-2.jpg", alt: "Travel photography" },
+    { src: "/images/travel/_MG_8293.JPG", alt: "Architecture photography" },
+    { src: "/images/travel/_MG_8467.JPG", alt: "Travel photography" },
+    { src: "/images/travel/_MG_9891.jpg", alt: "Travel photography" },
+    { src: "/images/travel/_MG_9934.jpg", alt: "Travel photography" },
+    { src: "/images/travel/_MG_9960.jpg", alt: "Travel photography" },
+    { src: "/images/travel/f1923904.JPG", alt: "Travel photography" },
+    { src: "/images/travel/f12617792.JPG", alt: "Travel photography" },
+    { src: "/images/travel/f14439680.JPG", alt: "Travel photography" },
+    { src: "/images/travel/Snapchat-1224295135.JPG", alt: "Travel photography" }
+  ],
+  year: "2025"
+},
+]
