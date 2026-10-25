@@ -4,6 +4,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { categories } from "@/data/projects";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,17 +27,15 @@ export default function Header() {
         <span className="brand-dot">.</span>
       </Link>
 
-      {/* Desktop navigation */}
       <nav className="nav-links" aria-label="Main navigation">
         <Link href="/portfolio">Work</Link>
         <Link href="/about">About</Link>
         <Link href="/services">Services</Link>
         <Link href="/contact" className="nav-contact">
-          Let&apos;s talk <span aria-hidden="true">↗</span>
+          Let's talk <span aria-hidden="true">↗</span>
         </Link>
       </nav>
 
-      {/* Mobile menu button */}
       <button
         type="button"
         className="mobile-menu-button"
@@ -50,7 +49,6 @@ export default function Header() {
         <span>{menuOpen ? "✕" : "☰"}</span>
       </button>
 
-      {/* Mobile navigation */}
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
           <button
@@ -65,23 +63,32 @@ export default function Header() {
 
           {workOpen && (
             <div className="mobile-work-dropdown">
-              <Link href="/portfolio" onClick={closeMenu}>
-                All Work
-              </Link>
-              <Link href="/portfolio/nightlife" onClick={closeMenu}>
-                Nightlife
-              </Link>
+              {categories.map((category) => (
+                <Link
+                  key={category}
+                  href={
+                    category === "All Work"
+                      ? "/portfolio"
+                      : `/portfolio?category=${encodeURIComponent(category)}`
+                  }
+                  onClick={closeMenu}
+                >
+                  {category}
+                </Link>
+              ))}
             </div>
           )}
 
           <Link href="/about" onClick={closeMenu}>
             About
           </Link>
+
           <Link href="/services" onClick={closeMenu}>
             Services
           </Link>
+
           <Link href="/contact" onClick={closeMenu}>
-            Let&apos;s talk <span aria-hidden="true">↗</span>
+            Let's talk <span aria-hidden="true">↗</span>
           </Link>
         </nav>
       )}
