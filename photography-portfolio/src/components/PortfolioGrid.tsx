@@ -1,13 +1,13 @@
 
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { categories, projects } from "@/data/projects";
 import type { PhotographyCategory } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 
-export default function PortfolioGrid() {
+function PortfolioGridContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get("category");
 
@@ -39,9 +39,7 @@ export default function PortfolioGrid() {
             className={`filter-button ${
               active === category ? "active" : ""
             }`}
-            onClick={() =>
-              setActive(category as "All Work" | PhotographyCategory)
-            }
+            onClick={() => setActive(category as "All Work" | PhotographyCategory)}
             aria-pressed={active === category}
           >
             {category}
@@ -61,5 +59,13 @@ export default function PortfolioGrid() {
         </p>
       )}
     </>
+  );
+}
+
+export default function PortfolioGrid() {
+  return (
+    <Suspense fallback={<p>Loading portfolio...</p>}>
+      <PortfolioGridContent />
+    </Suspense>
   );
 }
