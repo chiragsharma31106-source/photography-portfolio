@@ -1,14 +1,53 @@
+
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "Services", description: "Photography services for events, products, food, travel and automotive projects." };
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Photography services for events, products, food, travel and automotive projects.",
+};
+
+// Replace this with your actual WordPress contact page URL.
+const WORDPRESS_CONTACT_URL =
+  "https://your-wordpress-site.com/contact/";
 
 const services = [
-  ["01", "Event / Concert", "Live shows, college festivals, cultural events and behind-the-scenes moments."],
-  ["02", "Product", "Product images for brands, launches, catalogues and social media."],
-  ["03", "Food / Cafe", "Menu photography, cafe interiors, food stories and brand content."],
-  ["04", "Travel / Architecture", "Places, architecture, interiors and visual stories from the road."],
-  ["05", "Automotive", "Vehicle portraits, details, lifestyle frames and campaign imagery."]
+  {
+    number: "01",
+    title: "Event / Concert",
+    category: "Event / Concert",
+    description:
+      "Live shows, college festivals, cultural events and behind-the-scenes moments.",
+  },
+  {
+    number: "02",
+    title: "Product",
+    category: "Product",
+    description:
+      "Product images for brands, launches, catalogues and social media.",
+  },
+  {
+    number: "03",
+    title: "Food / Cafe",
+    category: "Food / Cafe",
+    description:
+      "Menu photography, cafe interiors, food stories and brand content.",
+  },
+  {
+    number: "04",
+    title: "Travel / Architecture",
+    category: "Travel / Architecture",
+    description:
+      "Places, architecture, interiors and visual stories from the road.",
+  },
+  {
+    number: "05",
+    title: "Automotive",
+    category: "Automotive",
+    description:
+      "Vehicle portraits, details, lifestyle frames and campaign imagery.",
+  },
 ];
 
 export default function ServicesPage() {
@@ -16,13 +55,60 @@ export default function ServicesPage() {
     <section className="section-shell page-section">
       <div className="page-intro">
         <p className="eyebrow">WAYS WE CAN WORK TOGETHER</p>
-        <h1>Photography<br /><em>with purpose.</em></h1>
-        <p className="intro-copy">Every project is different. Tell me what you have in mind and we can talk through the details.</p>
+
+        <h1>
+          Photography
+          <br />
+          <em>with purpose.</em>
+        </h1>
+
+        <p className="intro-copy">
+          Every project is different. Explore my work or
+          get in touch to plan your next shoot.
+        </p>
       </div>
+
       <div className="service-list">
-        {services.map(([number, title, description]) => <div className="service-row" key={number}><span>{number}</span><h2>{title}</h2><p>{description}</p></div>)}
+        {services.map((service) => (
+          <div className="service-row" key={service.number}>
+            <span>{service.number}</span>
+
+            <div className="service-info">
+              <Link
+                className="service-title-link"
+                href={`/portfolio?category=${encodeURIComponent(
+                  service.category
+                )}`}
+              >
+                <h2>{service.title} ↗</h2>
+              </Link>
+
+              <p>{service.description}</p>
+
+              <a
+                className="text-link service-book-link"
+                href={`${WORDPRESS_CONTACT_URL}?service=${encodeURIComponent(
+                  service.title
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Shoot for this service ↗
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="service-bottom"><p>Have an idea that doesn&apos;t fit neatly into a category?</p><Link className="text-link" href="/contact">Let&apos;s talk about it ↗</Link></div>
+
+      <div className="service-bottom">
+        <p>
+          Have an idea that doesn't fit neatly into a category?
+        </p>
+
+        <a className="text-link" href={WORDPRESS_CONTACT_URL}>
+          Let's talk about it ↗
+        </a>
+      </div>
     </section>
   );
 }
