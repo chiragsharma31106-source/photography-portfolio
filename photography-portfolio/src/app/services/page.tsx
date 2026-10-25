@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Photography services for events, products, food, travel and automotive projects.",
 };
 
-// Replace this with your actual WordPress contact page URL.
+// Replace with your actual WordPress contact page URL.
 const WORDPRESS_CONTACT_URL =
   "https://your-wordpress-site.com/contact/";
 
@@ -19,6 +19,8 @@ const services = [
     category: "Event / Concert",
     description:
       "Live shows, college festivals, cultural events and behind-the-scenes moments.",
+    message:
+      "Hi, I am interested in booking you for event or concert photography. Please share your availability and pricing.",
   },
   {
     number: "02",
@@ -26,6 +28,8 @@ const services = [
     category: "Product",
     description:
       "Product images for brands, launches, catalogues and social media.",
+    message:
+      "Hi, I need a product photoshoot for my brand. I would love to discuss the requirements and pricing.",
   },
   {
     number: "03",
@@ -33,6 +37,8 @@ const services = [
     category: "Food / Cafe",
     description:
       "Menu photography, cafe interiors, food stories and brand content.",
+    message:
+      "Hi, I am looking for food or cafe photography for my business. Please share your packages and availability.",
   },
   {
     number: "04",
@@ -40,6 +46,8 @@ const services = [
     category: "Travel / Architecture",
     description:
       "Places, architecture, interiors and visual stories from the road.",
+    message:
+      "Hi, I am interested in a travel or architecture photography shoot. Let's discuss the project details.",
   },
   {
     number: "05",
@@ -47,6 +55,8 @@ const services = [
     category: "Automotive",
     description:
       "Vehicle portraits, details, lifestyle frames and campaign imagery.",
+    message:
+      "Hi, I am interested in an automotive photoshoot. Please share your availability and pricing.",
   },
 ];
 
@@ -69,35 +79,44 @@ export default function ServicesPage() {
       </div>
 
       <div className="service-list">
-        {services.map((service) => (
-          <div className="service-row" key={service.number}>
-            <span>{service.number}</span>
+        {services.map((service) => {
+          const bookingUrl = new URL(WORDPRESS_CONTACT_URL);
 
-            <div className="service-info">
-              <Link
-                className="service-title-link"
-                href={`/portfolio?category=${encodeURIComponent(
-                  service.category
-                )}`}
-              >
-                <h2>{service.title} ↗</h2>
-              </Link>
+          bookingUrl.searchParams.set("service", service.title);
+          bookingUrl.searchParams.set("message", service.message);
 
-              <p>{service.description}</p>
+          return (
+            <div className="service-row" key={service.number}>
+              <span>{service.number}</span>
 
-              <a
-                className="text-link service-book-link"
-                href={`${WORDPRESS_CONTACT_URL}?service=${encodeURIComponent(
-                  service.title
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Shoot for this service ↗
-              </a>
+              <div className="service-info">
+                <Link
+                  className="service-title-link"
+                  href={`/portfolio?category=${encodeURIComponent(
+                    service.category
+                  )}`}
+                >
+                  <h2>{service.title} ↗</h2>
+                </Link>
+
+                <p>{service.description}</p>
+
+ 
+<a
+  className="text-link service-book-link"
+  href={`${WORDPRESS_CONTACT_URL}?service=${encodeURIComponent(
+    service.title
+  )}&message=${encodeURIComponent(service.message)}`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Shoot for this service ↗
+</a>
+
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       <div className="service-bottom">
