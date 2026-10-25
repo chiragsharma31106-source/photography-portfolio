@@ -102,16 +102,18 @@ export default function ServicesPage() {
                 <p>{service.description}</p>
 
  
+
 <a
   className="text-link service-book-link"
-  href={`${WORDPRESS_CONTACT_URL}?service=${encodeURIComponent(
-    service.title
-  )}&message=${encodeURIComponent(service.message)}`}
+  href={`https://wa.me/918094960826?text=${encodeURIComponent(
+    `Hi! I am interested in booking you for ${service.title} photography. ${service.message}`
+  )}`}
   target="_blank"
   rel="noopener noreferrer"
 >
   Shoot for this service ↗
 </a>
+
 
               </div>
             </div>
