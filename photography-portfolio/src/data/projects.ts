@@ -42,49 +42,90 @@ export const categories: ("All Work" | PhotographyCategory)[] = [
 // Replace these sample images with your own photographs before publishing.
 // Unsplash images are only placeholders for layout testing.
 export const projects: PortfolioProject[] = [
-  {
-    slug: "after-hours",
-    title: "After Hours",
-    category: "Event / Concert",
-    description: "A collection of live moments, stage lights and the energy between songs.",
-    coverImage: "/images/M3_02804.jpg",
-    gallery: [
-  { src: "/images/M3_02730.jpg", alt: "Photography 02730" },
-  { src: "/images/M3_02719.jpg", alt: "Photography 02719" },
-  { src: "/images/M3_02698.jpg", alt: "Photography 02698" },
-  { src: "/images/M3_02661.jpg", alt: "Photography 02661" },
-  { src: "/images/M3_02514.jpg", alt: "Photography 02514" },
-  { src: "/images/M3_02107.jpg", alt: "Photography 02107" },
-  { src: "/images/M3_02047.jpg", alt: "Photography 02047" },
-],
+ 
+{
+  slug: "after-hours",
+  title: "After Hours",
+  category: "Event / Concert",
+  description:
+    "A collection of live moments, stage lights and the raw energy of music, crowds and performances.",
+  coverImage: "/images/M3_02804.jpg",
+  gallery: [
+    { src: "/images/M3_02730.jpg", alt: "Live event photography 1" },
+    { src: "/images/M3_02719.jpg", alt: "Live event photography 2" },
+    { src: "/images/M3_02698.jpg", alt: "Live event photography 3" },
+    { src: "/images/M3_02661.jpg", alt: "Live event photography 4" },
+    { src: "/images/M3_02514.jpg", alt: "Live event photography 5" },
+    { src: "/images/M3_02107.jpg", alt: "Live event photography 6" },
+    { src: "/images/M3_02047.jpg", alt: "Live event photography 7" },
+    { src: "/images/DSC_6389.jpg", alt: "Live event photography 8" },
+    { src: "/images/DSC00200.jpg", alt: "Live event photography 9" },
+    { src: "/images/Untitled design (13).png", alt: "Event poster design 13" },
+    { src: "/images/Untitled design (14).png", alt: "Event poster design 14" },
+    { src: "/images/Untitled design (15).png", alt: "Event poster design 15" },
+    { src: "/images/Untitled design (16).png", alt: "Event poster design 16" },
+  ],
+
+
     year: "2025",
     location: "Jaipur, India"
   },
-  {
-    slug: "form-and-fragrance",
-    title: "Form & Fragrance",
-    category: "Product",
-    description: "Minimal product frames focused on texture, shape and thoughtful details.",
-    coverImage: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1400&q=85",
-    gallery: [
-      { src: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1600&q=85", alt: "Perfume bottle product photograph" },
-      { src: "https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1600&q=85", alt: "Perfume bottles arranged together" }
-    ],
-    year: "2025"
-  },
-  {
-    slug: "slow-mornings",
-    title: "Slow Mornings",
-    category: "Food / Cafe",
-    description: "Natural light, honest textures and the small rituals around a good cup of coffee.",
-    coverImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1400&q=85",
-    gallery: [
-      { src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1600&q=85", alt: "Coffee and cafe table" },
-      { src: "https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=85", alt: "Cafe interior with warm light" }
-    ],
-    year: "2025",
-    location: "Jaipur, India"
-  },
+ 
+{
+  slug: "form-and-fragrance",
+  title: "Form & Fragrance",
+  category: "Product",
+  description:
+    "A curated collection of product photography highlighting textures, shapes, lighting and thoughtful details.",
+  coverImage: "/images/product/_DSC0123.JPG",
+  gallery: [
+    { src: "/images/product/_DSC0123.JPG", alt: "Product photography 1" },
+    { src: "/images/product/_DSC0140.JPG", alt: "Product photography 2" },
+    { src: "/images/product/_MG_0636-Enhanced-NR.JPG", alt: "Product photography 3" },
+    { src: "/images/product/_MG_0654.JPG", alt: "Product photography 4" },
+    { src: "/images/product/_MG_0822.JPG", alt: "Product photography 5" },
+    { src: "/images/product/_MG_0858.JPG", alt: "Product photography 6" },
+    { src: "/images/product/_MG_9873.JPG", alt: "Product photography 7" },
+    { src: "/images/product/_MG_9900.JPG", alt: "Product photography 8" },
+    { src: "/images/product/_MG_9902.JPG", alt: "Product photography 9" },
+    { src: "/images/product/_MG_9907.JPG", alt: "Product photography 10" },
+    { src: "/images/product/DSC09671.JPG", alt: "Product photography 11" },
+    { src: "/images/product/DSC09674.JPG", alt: "Product photography 12" },
+    { src: "/images/product/DSC09708.JPG", alt: "Product photography 13" },
+    { src: "/images/product/DSC09742.JPG", alt: "Product photography 14" },
+    { src: "/images/product/DSC09756.JPG", alt: "Product photography 15" },
+    { src: "/images/product/IMG_20260109_164117586~2.JPG", alt: "Product photography 16" },
+    { src: "/images/product/IMG_20260112_173358205.JPG", alt: "Product photography 17" },
+  ],
+  year: "2025",
+},
+
+  
+{
+  slug: "food-photography",
+  title: "Food Stories",
+  category: "Food / Cafe",
+  description:
+    "A collection of food photography capturing delicious details, rich textures, and the art of presentation.",
+  coverImage: "/images/food/_DSC7568.jpg.jpeg",
+  gallery: [
+    { src: "/images/food/_DSC7568.jpg.jpeg", alt: "Food photography 1" },
+    { src: "/images/food/_DSC7570.jpg.jpeg", alt: "Food photography 2" },
+    { src: "/images/food/_DSC7574.jpg.jpeg", alt: "Food photography 3" },
+    { src: "/images/food/_DSC7585.jpg.jpeg", alt: "Food photography 4" },
+    { src: "/images/food/_DSC7615.jpg.jpeg", alt: "Food photography 5" },
+    { src: "/images/food/DSC00072.jpg", alt: "Food photography 6" },
+    { src: "/images/food/DSC00081.jpg", alt: "Food photography 7" },
+    { src: "/images/food/DSC00083.jpg", alt: "Food photography 8" },
+    { src: "/images/food/DSC00086.jpg", alt: "Food photography 9" },
+    { src: "/images/food/DSC00090.jpg", alt: "Food photography 10" },
+    { src: "/images/food/DSC00091.jpg", alt: "Food photography 11" },
+    { src: "/images/food/DSC00093.jpg", alt: "Food photography 12" },
+  ],
+  year: "2025",
+  location: "Jaipur, India",
+},
+
 {
   title: "Nightlife",
   slug: "nightlife",
