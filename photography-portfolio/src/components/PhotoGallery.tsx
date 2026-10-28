@@ -12,14 +12,49 @@ export default function PhotoGallery({
 }: {
   project: PortfolioProject;
 }) {
-  const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const activeImage =
+    activeIndex !== null ? project.gallery[activeIndex] : null;
+
+  const totalImages = project.gallery.length;
+
+  const showPrevious = () => {
+    setActiveIndex((current) => {
+      if (current === null || totalImages === 0) return current;
+      return (current - 1 + totalImages) % totalImages;
+    });
+  };
+
+  const showNext = () => {
+    setActiveIndex((current) => {
+      if (current === null || totalImages === 0) return current;
+      return (current + 1) % totalImages;
+    });
+  };
 
   useEffect(() => {
-    if (!activeImage) return;
+    if (activeIndex === null) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setActiveImage(null);
+        setActiveIndex(null);
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        setActiveIndex((current) => {
+          if (current === null || totalImages === 0) return current;
+          return (current - 1 + totalImages) % totalImages;
+        });
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        setActiveIndex((current) => {
+          if (current === null || totalImages === 0) return current;
+          return (current + 1) % totalImages;
+        });
       }
     };
 
@@ -30,17 +65,17 @@ export default function PhotoGallery({
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [activeImage]);
+  }, [activeIndex, totalImages]);
 
   return (
     <>
       <div className="gallery-grid">
-        {project.gallery.map((image) => (
+        {project.gallery.map((image, index) => (
           <button
             type="button"
             className="gallery-image gallery-image-button"
             key={image.src}
-            onClick={() => setActiveImage(image)}
+            onClick={() => setActiveIndex(index)}
             aria-label={`Open photo: ${image.alt}`}
           >
             <Image
@@ -59,24 +94,55 @@ export default function PhotoGallery({
         ))}
       </div>
 
-      {activeImage && (
+      {activeImage && activeIndex !== null && (
         <div
           className="photo-lightbox-overlay"
           role="dialog"
           aria-modal="true"
           aria-label={activeImage.alt}
-          onClick={() => setActiveImage(null)}
+          onClick={() => setActiveIndex(null)}
         >
           <button
             type="button"
             className="photo-lightbox-close"
             aria-label="Close photo"
-            onClick={() => setActiveImage(null)}
+            onClick={() => setActiveIndex(null)}
           >
             ×
           </button>
 
-          <div className="photo-lightbox-content">
+          {totalImages > 1 && (
+            <>
+              <button
+                type="button"
+                className="photo-lightbox-nav photo-lightbox-prev"
+                aria-label="Previous photo"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showPrevious();
+                }}
+              >
+                ←
+              </button>
+
+              <button
+                type="button"
+                className="photo-lightbox-nav photo-lightbox-next"
+                aria-label="Next photo"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  showNext();
+                }}
+              >
+                →
+              </button>
+            </>
+          )}
+
+          <div
+            className="photo-lightbox-content"
+            onClick={(event) => event.stopPropagation()}
+          >
             <Image
               src={activeImage.src}
               alt={activeImage.alt}
@@ -84,8 +150,18 @@ export default function PhotoGallery({
               height={1800}
               sizes="100vw"
               className="photo-lightbox-full"
-              onClick={(event) => event.stopPropagation()}
+              style={{
+                width: "auto",
+                height: "auto",
+                maxWidth: "100%",
+                maxHeight: "85vh",
+                objectFit: "contain",
+              }}
             />
+
+            <p className="photo-lightbox-counter">
+              {activeIndex + 1} / {totalImages}
+            </p>
           </div>
         </div>
       )}
