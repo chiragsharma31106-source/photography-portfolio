@@ -1,17 +1,137 @@
+
 import type { Metadata } from "next";
-import PortfolioGrid from "@/components/PortfolioGrid";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { projects } from "@/data/projects";
+import { getWhatsAppUrl } from "@/config/site";
+import PhotoGallery from "@/components/PhotoGallery";
 
-export const metadata: Metadata = { title: "Portfolio", description: "Explore photography projects across events, products, food, travel and automotive." };
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
-export default function PortfolioPage() {
+export function generateStaticParams() {
+  return projects.map((project) => ({
+    slug: project.slug,
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
+
+  return {
+    title: project?.title ?? "Project",
+    description: project?.description,
+  };
+}
+
+export default async function ProjectPage({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const currentIndex = projects.findIndex(
+    (item) => item.slug === slug
+  );
+
+  const nextProject =
+    projects[(currentIndex + 1) % projects.length];
+
   return (
-    <section className="section-shell page-section">
-      <div className="page-intro">
-        <p className="eyebrow">THE PORTFOLIO · 2024—2026</p>
-        <h1>Selected<br /><em>perspectives.</em></h1>
-        <p className="intro-copy">A collection of people, places, objects and fleeting moments seen through my lens.</p>
+    <article className="project-detail section-shell">
+      <Link className="back-link" href="/portfolio">
+        ← Back to all work
+      </Link>
+
+      <div className="detail-heading">
+        <div>
+          <p className="eyebrow">
+            {project.category.toUpperCase()}
+          </p>
+
+          <h1>
+            {project.title}
+            <span className="brand-dot">.</span>
+          </h1>
+        </div>
+
+        <p className="detail-description">
+          {project.description}
+        </p>
       </div>
-      <PortfolioGrid />
-    </section>
+
+      {/* Cover photo stays normal */}
+      <div className="detail-cover">
+        <Image
+          src={project.coverImage}
+          alt={project.title}
+          fill
+          priority
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="project-facts">
+        <div>
+          <span>Category</span>
+          <b>{project.category}</b>
+        </div>
+
+        {project.year && (
+          <div>
+            <span>Year</span>
+            <b>{project.year}</b>
+          </div>
+        )}
+
+        {project.location && (
+          <div>
+            <span>Location</span>
+            <b>{project.location}</b>
+          </div>
+        )}
+
+        {project.client && (
+          <div>
+            <span>Client</span>
+            <b>{project.client}</b>
+          </div>
+        )}
+      </div>
+
+      {/* Only gallery photos open in lightbox */}
+      <PhotoGallery project={project} />
+
+      <div className="next-project">
+        <p className="eyebrow">KEEP EXPLORING</p>
+
+        <Link href={`/portfolio/${nextProject.slug}`}>
+          <span>{nextProject.category}</span>
+          <h2>{nextProject.title} ↗</h2>
+        </Link>
+      </div>
+
+      <div className="detail-cta">
+        <p>Have a similar project in mind?</p>
+
+        <a
+          className="button"
+          href={getWhatsAppUrl(
+            `Hi! I'd like to enquire about a shoot similar to "${project.title}".`
+          )}
+          target="_blank"
+          rel="noreferrer"
+        >
+          Enquire about a shoot ↗
+        </a>
+      </div>
+    </article>
   );
 }
